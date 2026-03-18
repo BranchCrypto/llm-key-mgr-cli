@@ -424,7 +424,15 @@ class InteractiveMenu:
         default_path = "apikey_backup_%s.bin" % datetime.now().strftime("%Y%m%d_%H%M%S")
 
         custom = prompt_text(_t("menu.enter_path"), default=default_path)
-        Path(custom).write_bytes(salt + iv + tag + ct)
+        target = Path(custom)
+        if target.is_dir():
+            print_error(_t("path.is_dir"))
+            return
+        try:
+            target.write_bytes(salt + iv + tag + ct)
+        except Exception:
+            print_error(_t("path.write_failed"))
+            return
         print_success(_t("export.success", n=len(entries), path="[bold]%s[/bold]" % custom))
         print_info(_t("export.keep_safe"))
 
@@ -436,7 +444,11 @@ class InteractiveMenu:
         import json
 
         fpath = prompt_text(_t("menu.enter_path"), required=True)
-        if not Path(fpath).exists():
+        target = Path(fpath)
+        if target.is_dir():
+            print_error(_t("path.is_dir"))
+            return
+        if not target.exists():
             print_error(_t("import.not_found", path=fpath))
             return
 

@@ -126,5 +126,7 @@
   "menu.enter_name": "请输入密钥名称: ",
   "menu.enter_path": "请输入文件路径: ",
   "copy.clipboard": "API key 已复制到剪贴板！",
-  "copy.failed": "复制到剪贴板失败。"
+  "copy.failed": "复制到剪贴板失败。",
+  "path.is_dir": "错误：路径是文件夹，不是文件。",
+  "path.write_failed": "错误：无法写入文件。"
 }

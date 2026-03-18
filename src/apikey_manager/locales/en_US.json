@@ -126,5 +126,7 @@
   "menu.enter_name": "Enter the key name: ",
   "menu.enter_path": "Enter the file path: ",
   "copy.clipboard": "API key copied to clipboard!",
-  "copy.failed": "Failed to copy to clipboard."
+  "copy.failed": "Failed to copy to clipboard.",
+  "path.is_dir": "Error: path is a directory, not a file.",
+  "path.write_failed": "Error: failed to write to the file."
 }

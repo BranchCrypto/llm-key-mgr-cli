@@ -161,7 +161,7 @@ class InteractiveMenu:
 
         protocol_str = prompt_text(_t("add.protocol") + " (OpenAI / Anthropic)", required=True)
         try:
-            protocol = Protocol.parse_protocol(protocol_str)
+            protocol = KeyEntry.parse_protocol(protocol_str)
         except KeyEntry.ProtocolError as e:
             print_error(_t("model.invalid_protocol", value=e.value))
             return
@@ -273,7 +273,7 @@ class InteractiveMenu:
 
         new_proto = prompt_text(_t("add.protocol"), default=entry.protocol.value)
         try:
-            parsed = Protocol.parse_protocol(new_proto)
+            parsed = KeyEntry.parse_protocol(new_proto)
         except KeyEntry.ProtocolError as e:
             print_error(_t("model.invalid_protocol", value=e.value))
             return

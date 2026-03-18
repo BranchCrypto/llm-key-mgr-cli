@@ -146,7 +146,7 @@ def cmd_add(args):
         print_error(_t("add.duplicate", name="[bold]'%s'[/bold]" % name))
         return
     protocol_str = prompt_choice(_t("add.protocol"), ["OpenAI", "Anthropic"])
-    protocol = Protocol.parse_protocol(protocol_str)
+    protocol = KeyEntry.parse_protocol(protocol_str)
     base_url = prompt_text(_t("add.base_url"), required=True)
     model = prompt_text(_t("add.model"), default="")
     api_key = prompt_password(_t("add.api_key"))
@@ -219,7 +219,7 @@ def cmd_update(args):
     if new_name != entry.name:
         updates["new_name"] = new_name
     protocol_str = prompt_choice(_t("add.protocol"), ["OpenAI", "Anthropic"], default=entry.protocol.value)
-    new_protocol = Protocol.parse_protocol(protocol_str)
+    new_protocol = KeyEntry.parse_protocol(protocol_str)
     if new_protocol != entry.protocol:
         updates["protocol"] = new_protocol
     new_base_url = prompt_text(_t("add.base_url"), default=entry.base_url)

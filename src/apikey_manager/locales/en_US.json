@@ -112,7 +112,7 @@
   "menu.locked_hint": "Please unlock the vault first (option 0).",
   "menu.0.init": "Initialize vault (first-time setup)",
   "menu.1.add": "Add a new API key",
-  "menu.2.list": "List all API keys",
+  "menu.2.list": "List / view API keys",
   "menu.3.show": "View API key details",
   "menu.4.update": "Update an API key",
   "menu.5.delete": "Delete an API key",
@@ -128,5 +128,12 @@
   "copy.clipboard": "API key copied to clipboard!",
   "copy.failed": "Failed to copy to clipboard.",
   "path.is_dir": "Error: path is a directory, not a file.",
-  "path.write_failed": "Error: failed to write to the file."
+  "path.write_failed": "Error: failed to write to the file.",
+  "menu.3.update": "Update an API key",
+  "menu.4.delete": "Delete an API key",
+  "menu.5.passwd": "Change master password",
+  "menu.6.export": "Export encrypted backup",
+  "menu.7.import": "Import from backup",
+  "menu.8.lang": "Change language",
+  "menu.select_or_back": "Enter key number to view details (q to go back):"
 }

@@ -59,18 +59,16 @@ class InteractiveMenu:
             elif choice == "2":
                 self._do_list()
             elif choice == "3":
-                self._do_show()
-            elif choice == "4":
                 self._do_update()
-            elif choice == "5":
+            elif choice == "4":
                 self._do_delete()
-            elif choice == "6":
+            elif choice == "5":
                 self._do_passwd()
-            elif choice == "7":
+            elif choice == "6":
                 self._do_export()
-            elif choice == "8":
+            elif choice == "7":
                 self._do_import()
-            elif choice == "9":
+            elif choice == "8":
                 self._do_lang()
             else:
                 print_warning(_t("menu.invalid"))
@@ -190,11 +188,7 @@ class InteractiveMenu:
         print_success(_t("add.success", name="[bold]'%s'[/bold]" % name))
 
     def _do_list(self):
-        if not self._ensure_vault():
-            return
-        print_entries_table(self.vault.list_entries())
-
-    def _do_show(self):
+        """List keys in a table, then optionally view details for one."""
         if not self._ensure_vault():
             return
         entries = self.vault.list_entries()
@@ -202,17 +196,15 @@ class InteractiveMenu:
             print_warning(_t("list.empty"))
             return
 
-        # Brief list with numbers
-        console.print()
-        for i, e in enumerate(entries, 1):
-            console.print("    [bold cyan]%d[/bold cyan]  %s  (%s)" % (i, e.name, e.protocol.value))
-        console.print()
+        # Show table
+        print_entries_table(entries)
 
-        raw = input("  %s" % _t("menu.select_key")).strip()
+        # Offer to drill into one entry
+        console.print()
+        raw = input("  %s" % _t("menu.select_or_back")).strip()
         if raw.lower() == "q":
             return
         if not raw.isdigit():
-            print_warning(_t("menu.invalid"))
             return
         idx = int(raw) - 1
         if idx < 0 or idx >= len(entries):

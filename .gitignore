@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# User data (never commit secrets)
+*.db
+~/.apikey_vault.db
+~/.apikey_config.json
+*.enc
+
+# Test artifacts
+test_results*.txt
+test_*.db
+test_*.enc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

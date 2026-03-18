@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apikey-manager"
+version = "1.1.0"
+description = "Production-grade AI API Key Manager with encryption"
+requires-python = ">=3.10"
+dependencies = [
+    "cryptography>=42.0",
+    "rich>=13.0",
+    "prompt_toolkit>=3.0",
+]
+
+[project.scripts]
+apikey-mgr = "apikey_manager.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

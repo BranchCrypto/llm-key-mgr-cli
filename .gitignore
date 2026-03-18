@@ -17,6 +17,7 @@ build/
 test_results*.txt
 test_*.db
 test_*.enc
+_*.py
 
 # IDE
 .vscode/

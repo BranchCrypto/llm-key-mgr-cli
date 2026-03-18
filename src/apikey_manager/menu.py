@@ -230,6 +230,13 @@ class InteractiveMenu:
             api_key_plain = self.vault.decrypt_api_key(entry)
             print_entry_detail(entry, api_key_plain)
             print_warning(_t("show.visible_warning"))
+            # Copy to clipboard
+            try:
+                import subprocess
+                subprocess.run(['clip'], input=api_key_plain.encode('utf-8'), check=True, shell=True)
+                print_success(_t("copy.clipboard"))
+            except Exception:
+                print_error(_t("copy.failed"))
         else:
             print_entry_detail(entry)
 

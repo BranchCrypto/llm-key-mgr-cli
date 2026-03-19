@@ -3,9 +3,9 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "apikey-manager"
+name = "llm-key-mgr-cli"
 version = "1.1.0"
-description = "Production-grade AI API Key Manager with encryption"
+description = "Production-grade AI API Key Manager CLI with encryption"
 requires-python = ">=3.10"
 dependencies = [
     "cryptography>=42.0",
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-apikey-mgr = "apikey_manager.cli:main"
+llm-key-mgr = "llm_key_mgr_cli.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

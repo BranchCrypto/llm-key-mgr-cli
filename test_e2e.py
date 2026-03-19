@@ -3,10 +3,10 @@ import os, sys, json, tempfile, traceback
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from apikey_manager.models import KeyEntry, Protocol
-from apikey_manager.crypto import encrypt_value, decrypt_value, generate_salt, _derive_master_key
-from apikey_manager.vault import Vault
-from apikey_manager.i18n import lang
+from llm_key_mgr_cli.models import KeyEntry, Protocol
+from llm_key_mgr_cli.crypto import encrypt_value, decrypt_value, generate_salt, _derive_master_key
+from llm_key_mgr_cli.vault import Vault
+from llm_key_mgr_cli.i18n import lang
 
 log = []
 PASS = "TestPass123!"
@@ -165,7 +165,7 @@ for fn in [t01_i18n_basic, t02_i18n_detect, t03_init, t04_add, t05_decrypt,
         log.append("FAIL: %s -- %s" % (fn.__name__, e))
         log.append(traceback.format_exc())
 
-out = "\n".join(["="*60, "  API Key Manager + i18n - E2E Tests", "="*60] + log)
+out = "\n".join(["="*60, "  LLM Key Manager CLI + i18n - E2E Tests", "="*60] + log)
 passed = sum(1 for l in log if l.startswith("PASS"))
 failed = sum(1 for l in log if l.startswith("FAIL"))
 out += "\n\n  Result: %d passed, %d failed\n" % (passed, failed) + "="*60

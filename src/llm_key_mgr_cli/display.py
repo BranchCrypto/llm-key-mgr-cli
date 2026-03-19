@@ -214,9 +214,7 @@ def print_menu_table(vault_exists, key_count, is_unlocked):
         ("3", "menu.3.update", None),
         ("4", "menu.4.delete", None),
         ("5", "menu.5.passwd", None),
-        ("6", "menu.6.export", None),
-        ("7", "menu.7.import", None),
-        ("8", "menu.8.lang", None),
+        ("6", "menu.6.settings", None),
     ]
 
     for num, i18n_key, _ in menu_items:

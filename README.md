@@ -1,4 +1,4 @@
-# API Key Manager
+# LLM Key Manager CLI
 
 A production-grade terminal-based AI API key management tool with AES-256-GCM encryption, Argon2id key derivation, and bilingual (English/Chinese) interface.
 
@@ -7,7 +7,7 @@ A production-grade terminal-based AI API key management tool with AES-256-GCM en
 - **Encrypted Storage** -- AES-256-GCM with Argon2id (OWASP 2024 parameters: 64 MiB, 3 passes, parallelism 4)
 - **SQLite Backend** -- WAL mode for crash-safe atomic operations
 - **CRUD Operations** -- Add, list, view, update, delete API keys
-- **Interactive Menu** -- Run `apikey-mgr` with no arguments to enter a full TUI menu
+- **Interactive Menu** -- Run `llm-key-mgr` with no arguments to enter a full TUI menu
 - **CLI Commands** -- Scriptable subcommands for automation
 - **i18n** -- English and Chinese, auto-detected on first run, switchable anytime
 - **Export / Import** -- Portable encrypted vault export; cross-vault import re-encrypts with target master key
@@ -23,15 +23,15 @@ A production-grade terminal-based AI API key management tool with AES-256-GCM en
 ### Install
 
 ```bash
-git clone https://github.com/BranchCrypto/llm-api-key-mgr.git
-cd llm-api-key-mgr
+git clone https://github.com/BranchCrypto/llm-key-mgr-cli.git
+cd llm-key-mgr-cli
 pip install -e .
 ```
 
 ### First Run (Interactive Menu)
 
 ```bash
-apikey-mgr
+llm-key-mgr
 ```
 
 On first launch you will be prompted to:
@@ -43,50 +43,50 @@ On first launch you will be prompted to:
 
 ```bash
 # Initialize vault
-apikey-mgr init
+llm-key-mgr init
 
 # Add a key
-apikey-mgr add
+llm-key-mgr add
 
 # List all keys
-apikey-mgr list
+llm-key-mgr list
 
 # Show key details
-apikey-mgr show
+llm-key-mgr show
 
 # Update a key
-apikey-mgr update
+llm-key-mgr update
 
 # Delete a key
-apikey-mgr delete
+llm-key-mgr delete
 
 # Change master password
-apikey-mgr passwd
+llm-key-mgr passwd
 
 # Export / Import
-apikey-mgr export -o my_keys.enc
-apikey-mgr import -i my_keys.enc
+llm-key-mgr export -o my_keys.enc
+llm-key-mgr import -i my_keys.enc
 
 # Switch language
-apikey-mgr lang
-apikey-mgr --lang zh_CN list
+llm-key-mgr lang
+llm-key-mgr --lang zh_CN list
 ```
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `apikey-mgr` | Interactive menu (default) |
-| `apikey-mgr init` | Initialize a new encrypted vault |
-| `apikey-mgr add` | Add a new API key entry |
-| `apikey-mgr list` | List all stored keys |
-| `apikey-mgr show` | View a specific key's details |
-| `apikey-mgr update` | Update an existing key |
-| `apikey-mgr delete` | Delete a key |
-| `apikey-mgr passwd` | Change the master password |
-| `apikey-mgr export -o FILE` | Export vault to an encrypted file |
-| `apikey-mgr import -i FILE` | Import keys from an encrypted file |
-| `apikey-mgr lang` | Change interface language |
+| `llm-key-mgr` | Interactive menu (default) |
+| `llm-key-mgr init` | Initialize a new encrypted vault |
+| `llm-key-mgr add` | Add a new API key entry |
+| `llm-key-mgr list` | List all stored keys |
+| `llm-key-mgr show` | View a specific key's details |
+| `llm-key-mgr update` | Update an existing key |
+| `llm-key-mgr delete` | Delete a key |
+| `llm-key-mgr passwd` | Change the master password |
+| `llm-key-mgr export -o FILE` | Export vault to an encrypted file |
+| `llm-key-mgr import -i FILE` | Import keys from an encrypted file |
+| `llm-key-mgr lang` | Change interface language |
 
 ## Key Entry Fields
 
@@ -126,12 +126,12 @@ python test_e2e.py
 ### Project Structure
 
 ```
-llm-api-key-mgr/
+llm-key-mgr-cli/
   pyproject.toml
   README.md
   test_e2e.py
   src/
-    apikey_manager/
+    llm_key_mgr_cli/
       __init__.py
       models.py        # Data models & validation
       crypto.py        # AES-256-GCM + Argon2id

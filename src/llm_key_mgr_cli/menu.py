@@ -65,11 +65,7 @@ class InteractiveMenu:
             elif choice == "5":
                 self._do_passwd()
             elif choice == "6":
-                self._do_export()
-            elif choice == "7":
-                self._do_import()
-            elif choice == "8":
-                self._do_lang()
+                self._do_settings()
             else:
                 print_warning(_t("menu.invalid"))
 
@@ -381,6 +377,34 @@ class InteractiveMenu:
 
         self.unlocked = True
         print_success(_t("pw.changed"))
+
+    def _do_settings(self):
+        """Settings sub-menu: export, import, language."""
+        console.print()
+        console.print("  [bold]%s[/bold]" % _t("settings.title"))
+        console.print()
+        items = [
+            ("1", "settings.export"),
+            ("2", "settings.import"),
+            ("3", "settings.lang"),
+        ]
+        for num, key in items:
+            console.print("    [bold cyan]%s[/bold cyan]  %s" % (num, _t(key)))
+        console.print()
+        console.print("    [dim]q  %s[/dim]" % _t("settings.back"))
+        console.print()
+
+        raw = input("  %s" % _t("settings.select")).strip()
+        if raw == "1":
+            self._do_export()
+        elif raw == "2":
+            self._do_import()
+        elif raw == "3":
+            self._do_lang()
+        elif raw.lower() == "q":
+            pass
+        else:
+            print_warning(_t("settings.invalid"))
 
     def _do_export(self):
         if not self._ensure_vault():
